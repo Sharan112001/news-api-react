@@ -49,15 +49,6 @@ export class News extends Component {
     this.updateNews();
     }
 
-    // handleNextClick = async ()=>{
-    //     this.setState({page:this.state.page+1});
-    //     this.updateNews();
-    // }
-    // handlePrevClick = async ()=>{
-    //     this.setState({page:this.state.page-1});
-    //     this.updateNews();
-        
-    // }
     fetchMoreData = async () => {
         this.setState({page: this.state +1});
         const url =`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
@@ -74,7 +65,7 @@ export class News extends Component {
         return (
             <>
                 <h1 className="text-center">Peoples News - Top Headlines   {this.capitalizeFirstLetter(this.props.category)}</h1>
-                {/* {this.state.loading && <Spinner/>} */}
+               
                 <InfiniteScroll
                 dataLength={this.state.articles.length}
                 next={this.fetchMoreData}
@@ -96,10 +87,7 @@ export class News extends Component {
                 </div>
                 </div>
                 </InfiniteScroll>
-                {/* <div className="conatainer d-flex justify-content-between">
-                <button disabled ={this.state.page<=1} type="button" className="btn btn-dark " onClick={this.handlePrevClick}>&larr;Previous</button>
-                <button disabled={this.state.page+1 > Math.ceil(this.state.totalResults/this.props.pageSize)} type="button" className="btn btn-dark "onClick={this.handleNextClick}>Next &rarr;</button>
-                </div> */}
+                
             </>
         )
     }
